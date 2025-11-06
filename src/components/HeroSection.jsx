@@ -248,10 +248,9 @@ export default function HeroSection() {
         transition={{ duration: 0.8 }}
         className="relative z-10 bg-gray-900/80 backdrop-blur-sm rounded-xl p-8 w-11/12 max-w-4xl border border-green-500/30"
       >
-        {/* Social Links */}
-        {/* Social Links */}
+        {/* Social Links - Better mobile layout */}
         <motion.div
-          className="absolute top-6 right-6 flex space-x-3"
+          className={`absolute top-6 right-6 ${isMobile ? 'flex-col space-y-3 space-x-0' : 'flex space-x-3'}`}
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5 }}
@@ -261,11 +260,11 @@ export default function HeroSection() {
             href="https://github.com/zakari-aee"
             target="_blank"
             rel="noreferrer"
-            className="bg-gray-800/50 p-2 rounded-lg border border-gray-600 hover:scale-110 transition-transform"
+            className="bg-gray-800/50 p-2 rounded-lg border border-gray-600 hover:scale-110 transition-transform flex items-center justify-center"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            <FaGithub size={20} style={{ color: "#FFFFFF" }} />
+            <FaGithub size={isMobile ? 18 : 20} style={{ color: "#FFFFFF" }} />
           </motion.a>
 
           {/* LinkedIn - official blue */}
@@ -273,21 +272,21 @@ export default function HeroSection() {
             href="https://linkedin.com/in/zakariae-alliouate"
             target="_blank"
             rel="noreferrer"
-            className="bg-gray-800/50 p-2 rounded-lg border border-gray-600 hover:scale-110 transition-transform"
+            className="bg-gray-800/50 p-2 rounded-lg border border-gray-600 hover:scale-110 transition-transform flex items-center justify-center"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            <FaLinkedin size={20} style={{ color: "#0077B5" }} />
+            <FaLinkedin size={isMobile ? 18 : 20} style={{ color: "#0077B5" }} />
           </motion.a>
 
           {/* Email - red */}
           <motion.a
             href="mailto:zakariaealliouate@gmail.com"
-            className="bg-gray-800/50 p-2 rounded-lg border border-gray-600 hover:scale-110 transition-transform"
+            className="bg-gray-800/50 p-2 rounded-lg border border-gray-600 hover:scale-110 transition-transform flex items-center justify-center"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            <FaEnvelope size={20} style={{ color: "#D44638" }} />
+            <FaEnvelope size={isMobile ? 18 : 20} style={{ color: "#D44638" }} />
           </motion.a>
         </motion.div>
 
