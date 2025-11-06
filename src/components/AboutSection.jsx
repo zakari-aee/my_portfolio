@@ -15,7 +15,7 @@ const LetterGlitch = () => {
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
 
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@!%^&*()';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@!%^&*()qwertyuiopasdfghjklzxcvbnm';
     const fontSize = 14;
     const columns = Math.floor(width / fontSize);
     const drops = Array(columns).fill(1);
@@ -111,12 +111,12 @@ export default function AboutSection() {
 
   const education = [
     {
-      year: "2022 - 2023",
+      year: "2023- 2024",
       degree: "Bachelor's Degree",
       institution: "Morocco university Molai Smail"
     },
     {
-      year: "2023 - 2025",
+      year: "2024 - 2026",
       degree: "Full Stack Developer",
       institution: "OFPPT - 2 Year Program"
     }
@@ -271,7 +271,11 @@ export default function AboutSection() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Code Commits:</span>
-                  <span className="text-green-300">500+</span>
+                  <span className="text-green-300">700+</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400">LeetCode Problems:</span>
+                  <span className="text-orange-300">100+</span>
                 </div>
               </div>
             </div>

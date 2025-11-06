@@ -1,15 +1,21 @@
 // HeroSection.jsx
 import React, { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaNodeJs, FaPython, FaAws, FaDocker, FaHtml5, FaCss3Alt, FaJs, FaGitAlt, FaLinux, FaReact, FaGithub, FaLinkedin, FaEnvelope, FaTerminal } from "react-icons/fa";
-import { SiPostgresql, SiMongodb, SiCplusplus, SiMysql, SiVim, SiLaravel } from "react-icons/si";
+import { FaNodeJs, FaPython, FaAws, FaDocker, FaJs, FaGitAlt, FaLinux, FaReact, FaGithub, FaLinkedin, FaEnvelope, FaTerminal } from "react-icons/fa";
+import { SiPostgresql, SiMongodb, SiTailwindcss, SiMysql, SiVim, SiLaravel, SiC, } from "react-icons/si";
 
 // For VS Code icon, we'll use a different approach
 const VSCodeIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+  <svg
+    className="w-5 h-5"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="#007ACC"
+  >
     <path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .327 8.74L3.899 12 .327 15.26a1 1 0 0 0 0 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 19.06V4.94a1.5 1.5 0 0 0-.85-2.353z" />
   </svg>
 );
+
 
 // Working LetterGlitch component
 const LetterGlitch = () => {
@@ -111,58 +117,66 @@ const GlitchButton = ({ children, onClick, className = "" }) => {
 export default function HeroSection() {
   const [activeSkill, setActiveSkill] = useState("all");
   const [terminalText, setTerminalText] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
 
   const skills = {
     all: [
-      { name: "Python", icon: <FaPython className="w-5 h-5" /> },
-      { name: "C++", icon: <SiCplusplus className="w-5 h-5" /> },
-      { name: "JavaScript", icon: <FaJs className="w-5 h-5" /> },
-      { name: "React", icon: <FaReact className="w-5 h-5" /> },
-      { name: "Node.js", icon: <FaNodeJs className="w-5 h-5" /> },
-      { name: "HTML5", icon: <FaHtml5 className="w-5 h-5" /> },
-      { name: "CSS3", icon: <FaCss3Alt className="w-5 h-5" /> },
+      { name: "Python", icon: <FaPython className="w-5 h-5 text-blue-400" /> },
+      { name: "C", icon: <SiC className="w-5 h-5 text-blue-600" /> },
+      { name: "JavaScript", icon: <FaJs className="w-5 h-5 text-yellow-400" /> },
+      { name: "React", icon: <FaReact className="w-5 h-5 text-cyan-400" /> },
+      { name: "Laravel", icon: <SiLaravel className="w-5 h-5 text-red-500" /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss className="w-6 h-6 text-[#06B6D4]" /> },
+
+      { name: "Node.js", icon: <FaNodeJs className="w-5 h-5 text-green-600" /> },
+      { name: "PostgreSQL", icon: <SiPostgresql className="w-5 h-5 text-blue-400" /> },
+      { name: "MongoDB", icon: <SiMongodb className="w-5 h-5 text-green-500" /> },
+      { name: "MySQL", icon: <SiMysql className="w-5 h-5 text-blue-600" /> },
+      { name: "Docker", icon: <FaDocker className="w-5 h-5 text-blue-400" /> },
+      { name: "Git", icon: <FaGitAlt className="w-5 h-5 text-orange-500" /> },
+      { name: "Vim", icon: <SiVim className="w-5 h-5 text-green-400" /> },
       { name: "VS Code", icon: <VSCodeIcon /> },
-      { name: "Linux", icon: <FaLinux className="w-5 h-5" /> },
-      { name: "PostgreSQL", icon: <SiPostgresql className="w-5 h-5" /> },
-      { name: "MongoDB", icon: <SiMongodb className="w-5 h-5" /> },
-      { name: "MySQL", icon: <SiMysql className="w-5 h-5" /> },
-      { name: "Docker", icon: <FaDocker className="w-5 h-5" /> },
-      { name: "AWS", icon: <FaAws className="w-5 h-5" /> },
-      { name: "Git", icon: <FaGitAlt className="w-5 h-5" /> },
-      { name: "Vim", icon: <SiVim className="w-5 h-5" /> },          // <-- added
-      { name: "Laravel", icon: <SiLaravel className="w-5 h-5" /> },
+            { name: "Linux", icon: <FaLinux className="w-5 h-5 text-yellow-300" /> },
+
+
     ],
+
     language: [
-      { name: "Python", icon: <FaPython className="w-5 h-5" /> },
-      { name: "C++", icon: <SiCplusplus className="w-5 h-5" /> },
-      { name: "JavaScript", icon: <FaJs className="w-5 h-5" /> },
+      { name: "Python", icon: <FaPython className="w-5 h-5 text-blue-400" /> },
+      { name: "C", icon: <SiC className="w-5 h-5 text-blue-600" /> },
+      { name: "JavaScript", icon: <FaJs className="w-5 h-5 text-yellow-400" /> },
     ],
+
     database: [
-      { name: "PostgreSQL", icon: <SiPostgresql className="w-5 h-5" /> },
-      { name: "MongoDB", icon: <SiMongodb className="w-5 h-5" /> },
-      { name: "MySQL", icon: <SiMysql className="w-5 h-5" /> },
+      { name: "PostgreSQL", icon: <SiPostgresql className="w-5 h-5 text-blue-400" /> },
+      { name: "MongoDB", icon: <SiMongodb className="w-5 h-5 text-green-500" /> },
+      { name: "MySQL", icon: <SiMysql className="w-5 h-5 text-blue-600" /> },
     ],
+
     frontend: [
-      { name: "React", icon: <FaReact className="w-5 h-5" /> },
-      { name: "HTML5", icon: <FaHtml5 className="w-5 h-5" /> },
-      { name: "CSS3", icon: <FaCss3Alt className="w-5 h-5" /> },
-      { name: "JavaScript", icon: <FaJs className="w-5 h-5" /> },
+      { name: "React", icon: <FaReact className="w-5 h-5 text-cyan-400" /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss className="w-6 h-6 text-[#06B6D4]" /> },
+      { name: "JavaScript", icon: <FaJs className="w-5 h-5 text-yellow-400" /> },
+
+
     ],
+
     backend: [
-      { name: "Node.js", icon: <FaNodeJs className="w-5 h-5" /> },
-      { name: "Python", icon: <FaPython className="w-5 h-5" /> },
+      { name: "Node.js", icon: <FaNodeJs className="w-5 h-5 text-green-600" /> },
+      { name: "Python", icon: <FaPython className="w-5 h-5 text-blue-400" /> },
     ],
+
     tool: [
       { name: "VS Code", icon: <VSCodeIcon /> },
-      { name: "Linux", icon: <FaLinux className="w-5 h-5" /> },
-      { name: "Docker", icon: <FaDocker className="w-5 h-5" /> },
-      { name: "Vim", icon: <SiVim className="w-5 h-5" /> },          // <-- added
-
-      { name: "Git", icon: <FaGitAlt className="w-5 h-5" /> },
+      { name: "Linux", icon: <FaLinux className="w-5 h-5 text-yellow-300" /> },
+      { name: "Docker", icon: <FaDocker className="w-5 h-5 text-blue-400" /> },
+      { name: "Vim", icon: <SiVim className="w-5 h-5 text-green-400" /> },
+      { name: "Git", icon: <FaGitAlt className="w-5 h-5 text-orange-500" /> },
     ],
+
     cloud: [
-      { name: "AWS", icon: <FaAws className="w-5 h-5" /> },
-      { name: "Docker", icon: <FaDocker className="w-5 h-5" /> },
+      { name: "AWS", icon: <FaAws className="w-5 h-5 text-orange-400" /> },
+      { name: "Docker", icon: <FaDocker className="w-5 h-5 text-blue-400" /> },
     ]
   };
 
@@ -207,6 +221,23 @@ export default function HeroSection() {
     type();
   }, []);
 
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
+  // Determine which skills to display
+  const displaySkills = isMobile ? skills.all : skills[activeSkill];
+
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center bg-gray-900 overflow-hidden">
       <LetterGlitch />
@@ -218,41 +249,48 @@ export default function HeroSection() {
         className="relative z-10 bg-gray-900/80 backdrop-blur-sm rounded-xl p-8 w-11/12 max-w-4xl border border-green-500/30"
       >
         {/* Social Links */}
+        {/* Social Links */}
         <motion.div
           className="absolute top-6 right-6 flex space-x-3"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5 }}
         >
+          {/* GitHub - stays white */}
           <motion.a
             href="https://github.com/zakari-aee"
             target="_blank"
             rel="noreferrer"
-            className="text-green-400 hover:text-green-300 bg-gray-800/50 p-2 rounded-lg border border-green-500/30"
+            className="bg-gray-800/50 p-2 rounded-lg border border-gray-600 hover:scale-110 transition-transform"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            <FaGithub size={20} />
+            <FaGithub size={20} style={{ color: "#FFFFFF" }} />
           </motion.a>
+
+          {/* LinkedIn - official blue */}
           <motion.a
             href="https://linkedin.com/in/zakariae-alliouate"
             target="_blank"
             rel="noreferrer"
-            className="text-green-400 hover:text-green-300 bg-gray-800/50 p-2 rounded-lg border border-green-500/30"
+            className="bg-gray-800/50 p-2 rounded-lg border border-gray-600 hover:scale-110 transition-transform"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            <FaLinkedin size={20} />
+            <FaLinkedin size={20} style={{ color: "#0077B5" }} />
           </motion.a>
+
+          {/* Email - red */}
           <motion.a
             href="mailto:zakariaealliouate@gmail.com"
-            className="text-green-400 hover:text-green-300 bg-gray-800/50 p-2 rounded-lg border border-green-500/30"
+            className="bg-gray-800/50 p-2 rounded-lg border border-gray-600 hover:scale-110 transition-transform"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            <FaEnvelope size={20} />
+            <FaEnvelope size={20} style={{ color: "#D44638" }} />
           </motion.a>
         </motion.div>
+
 
         {/* Main Content */}
         <div className="text-white font-mono space-y-6">
@@ -313,16 +351,18 @@ export default function HeroSection() {
           >
             <div className="flex items-center space-x-4 mb-4">
               <p className="text-green-400 text-sm">
-                <span className="text-blue-400">visitor@portfolio</span>:<span className="text-yellow-400">~</span>$ skills
+                <span className="text-blue-400">visitor@portfolio</span>:<span className="text-yellow-400">~</span>$  skills
               </p>
-              <div className="flex space-x-2 flex-wrap">
+              
+              {/* Category buttons - hidden on mobile */}
+              <div className="hidden md:flex space-x-2 flex-wrap">
                 {Object.keys(skills).map((category) => (
                   <motion.button
                     key={category}
                     onClick={() => setActiveSkill(category)}
                     className={`px-3 py-1 text-xs rounded-full border transition-all ${activeSkill === category
-                        ? "bg-green-500 text-gray-900 border-green-400"
-                        : "text-green-300 border-green-500/50 hover:bg-green-500/20"
+                      ? "bg-green-500 text-gray-900 border-green-400"
+                      : "text-green-300 border-green-500/50 hover:bg-green-500/20"
                       }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -342,7 +382,7 @@ export default function HeroSection() {
               transition={{ delay: 1.2, duration: 0.5 }}
             >
               <AnimatePresence mode="wait">
-                {skills[activeSkill]?.map((skill, index) => (
+                {displaySkills?.map((skill, index) => (
                   <motion.span
                     key={skill.name}
                     layout
@@ -359,10 +399,10 @@ export default function HeroSection() {
                       backgroundColor: "#1f3a2f",
                       transition: { type: "spring", stiffness: 400 }
                     }}
-                    className="px-4 py-2 border border-green-500 rounded-lg text-green-300 text-sm cursor-pointer flex items-center space-x-2 bg-gray-800/50 backdrop-blur-sm"
+                    className="px-4 py-2 border border-green-500 rounded-lg text-sm cursor-pointer flex items-center space-x-2 bg-gray-800/50 backdrop-blur-sm"
                   >
                     {skill.icon}
-                    <span>{skill.name}</span>
+                    <span className="text-white">{skill.name}</span>
                   </motion.span>
                 ))}
               </AnimatePresence>
