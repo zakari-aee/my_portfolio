@@ -1,14 +1,15 @@
-import Navbar from "./components/Navbar"
-import HeroSection from "./components/HeroSection"
+// App.jsx
+import React from 'react';
+import HeroSection from './components/HeroSection';
+import AboutSection from './components/AboutSection';
 
-
-export default function App() {
+function App() {
   return (
-    <>
-    <HeroSection  />
-      <Navbar />
-    </>
-      
-    
-  )
+    <div className="bg-gray-900">
+      <HeroSection />
+      <AboutSection />
+    </div>
+  );
 }
+
+export default App;
