@@ -1,5 +1,6 @@
 // App.jsx
 import HeroSection from "./components/HeroSection";
+import Contact from "./components/Contact";
 import AboutSection from "./components/AboutSection";
 import Footer from "./components/Footer";
 
@@ -8,6 +9,7 @@ function App() {
     <div className="relative">
       <HeroSection />
       <AboutSection />
+      
       <div className="relative z-10"> {/* Add this wrapper */}
         <Footer />
       </div>
