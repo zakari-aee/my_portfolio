@@ -101,45 +101,31 @@ export default function AboutSection() {
 
   const experiences = [
     {
-      year: "2023 - Present",
-      title: "Full Stack Developer",
-      company: "Tech Solutions Inc.",
-      description: "Developing scalable web applications using modern technologies and cloud infrastructure.",
-      technologies: ["React", "Node.js", "Python", "PostgreSQL", "AWS", "Docker"]
-    },
-    {
-      year: "2021 - 2023",
-      title: "Backend Developer",
-      company: "Digital Innovations",
-      description: "Built RESTful APIs and microservices architecture for enterprise applications.",
-      technologies: ["JavaScript", "MongoDB", "Express.js", "Redis", "Linux"]
-    },
-    {
-      year: "2019 - 2021",
-      title: "Junior Developer",
-      company: "StartUp Labs",
-      description: "Started my career building frontend interfaces and learning full-stack development.",
-      technologies: ["HTML5", "CSS3", "JavaScript", "React", "Git"]
+      year: "2025 - Present",
+      title: "Student",
+      company: "1337 School",
+      description: "Intensive coding school focusing on C programming, Linux, shell scripting, and Git version control.",
+      technologies: ["C", "Linux", "Shell", "Git", "Algorithms", "Data Structures"]
     }
   ];
 
   const education = [
     {
-      year: "2017 - 2021",
-      degree: "Bachelor of Computer Science",
-      institution: "University of Technology, Morocco"
+      year: "2022 - 2023",
+      degree: "Bachelor's Degree",
+      institution: "Morocco university Molai Smail"
     },
     {
-      year: "2015 - 2017",
-      degree: "High School Diploma - Science",
-      institution: "Lycee Technique, Casablanca"
+      year: "2023 - 2025",
+      degree: "Full Stack Developer",
+      institution: "OFPPT - 2 Year Program"
     }
   ];
 
   const texts = [
-    "Passionate about technology and innovation...",
-    "Full Stack Developer with 4+ years of experience...",
-    "Specialized in modern web technologies...",
+    "Passionate about coding and technology...",
+    "student at 1337 School...",
+    "Specialized in C programming and Linux systems...",
     "Always learning and exploring new challenges..."
   ];
 
@@ -240,7 +226,7 @@ export default function AboutSection() {
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-400">Name:</span>
-                  <span className="text-green-300">Ziko Alliouate</span>
+                  <span className="text-green-300">Zakariae Alliouate</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Location:</span>
@@ -248,11 +234,11 @@ export default function AboutSection() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Email:</span>
-                  <span className="text-blue-300">ziko@example.com</span>
+                  <span className="text-blue-300">zakariaealliouate@gmail.com</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Experience:</span>
-                  <span className="text-yellow-300">4+ Years</span>
+                  <span className="text-yellow-300">Student</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Status:</span>
@@ -277,15 +263,15 @@ export default function AboutSection() {
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-400">Projects Completed:</span>
-                  <span className="text-green-300">50+</span>
+                  <span className="text-green-300">10+</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Happy Clients:</span>
-                  <span className="text-green-300">30+</span>
+                  <span className="text-gray-400">Coding Level:</span>
+                  <span className="text-green-300">Intermediate</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Code Commits:</span>
-                  <span className="text-green-300">2k+</span>
+                  <span className="text-green-300">500+</span>
                 </div>
               </div>
             </div>
@@ -383,10 +369,10 @@ export default function AboutSection() {
               className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6"
             >
               {[
-                { label: "Frontend", count: "12 Projects", color: "text-yellow-400" },
-                { label: "Backend", count: "8 Projects", color: "text-blue-400" },
-                { label: "Database", count: "15+ DBs", color: "text-green-400" },
-                { label: "Cloud", count: "5+ Deployments", color: "text-orange-400" }
+                { label: "C Programming", count: "1337 School", color: "text-yellow-400" },
+                { label: "Linux/Shell", count: "System Admin", color: "text-blue-400" },
+                { label: "Git", count: "Version Control", color: "text-green-400" },
+                { label: "Full Stack", count: "OFPPT Program", color: "text-orange-400" }
               ].map((skill, index) => (
                 <motion.div
                   key={index}
@@ -409,8 +395,8 @@ export default function AboutSection() {
           transition={{ delay: 0.8 }}
           viewport={{ once: true }}
         >
-          <p>$ more_info: <span className="text-blue-400">Passionate about creating efficient and scalable solutions</span></p>
-          <p>$ interests: <span className="text-yellow-400">Open Source, DevOps, Machine Learning</span></p>
+          <p>$ more_info: <span className="text-blue-400">Passionate about coding and system programming</span></p>
+          <p>$ interests: <span className="text-yellow-400">C Programming, Linux, Shell Scripting, Git</span></p>
         </motion.div>
       </motion.div>
     </section>

@@ -1,13 +1,13 @@
 // HeroSection.jsx
 import React, { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaNodeJs, FaPython, FaAws, FaDocker, FaHtml5, FaCss3Alt, FaJs, FaGitAlt, FaLinux, FaReact, FaGithub, FaLinkedin, FaEnvelope, FaCode, FaTerminal } from "react-icons/fa";
-import { SiGo, SiKubernetes, SiPostgresql, SiMongodb, SiCplusplus, SiMysql, SiRedis } from "react-icons/si";
+import { FaNodeJs, FaPython, FaAws, FaDocker, FaHtml5, FaCss3Alt, FaJs, FaGitAlt, FaLinux, FaReact, FaGithub, FaLinkedin, FaEnvelope, FaTerminal } from "react-icons/fa";
+import { SiPostgresql, SiMongodb, SiCplusplus, SiMysql, SiVim, SiLaravel } from "react-icons/si";
 
 // For VS Code icon, we'll use a different approach
 const VSCodeIcon = () => (
   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .327 8.74L3.899 12 .327 15.26a1 1 0 0 0 0 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 19.06V4.94a1.5 1.5 0 0 0-.85-2.353z"/>
+    <path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .327 8.74L3.899 12 .327 15.26a1 1 0 0 0 0 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 19.06V4.94a1.5 1.5 0 0 0-.85-2.353z" />
   </svg>
 );
 
@@ -32,14 +32,14 @@ const LetterGlitch = () => {
     function draw() {
       ctx.fillStyle = 'rgba(15, 23, 42, 0.05)';
       ctx.fillRect(0, 0, width, height);
-      
+
       ctx.fillStyle = '#10b981';
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
         const text = characters.charAt(Math.floor(Math.random() * characters.length));
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        
+
         if (drops[i] * fontSize > height && Math.random() > 0.975) {
           drops[i] = 0;
         }
@@ -68,8 +68,8 @@ const LetterGlitch = () => {
   }, []);
 
   return (
-    <canvas 
-      ref={canvasRef} 
+    <canvas
+      ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
     />
   );
@@ -78,14 +78,14 @@ const LetterGlitch = () => {
 // Working Button Component
 const GlitchButton = ({ children, onClick, className = "" }) => {
   const [isHovered, setIsHovered] = useState(false);
-  
+
   return (
     <motion.button
       onClick={onClick}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       className={`relative px-6 py-3 bg-green-500 hover:bg-green-400 text-gray-900 font-bold rounded-lg overflow-hidden border-2 border-green-400 transition-all duration-300 ${className}`}
-      whileHover={{ 
+      whileHover={{
         scale: 1.05,
         y: -2
       }}
@@ -94,7 +94,7 @@ const GlitchButton = ({ children, onClick, className = "" }) => {
       <span className="relative z-10 flex items-center justify-center">
         {children}
       </span>
-      
+
       {isHovered && (
         <motion.div
           className="absolute inset-0 bg-white/20"
@@ -121,29 +121,26 @@ export default function HeroSection() {
       { name: "Node.js", icon: <FaNodeJs className="w-5 h-5" /> },
       { name: "HTML5", icon: <FaHtml5 className="w-5 h-5" /> },
       { name: "CSS3", icon: <FaCss3Alt className="w-5 h-5" /> },
-      { name: "Go", icon: <SiGo className="w-5 h-5" /> },
       { name: "VS Code", icon: <VSCodeIcon /> },
       { name: "Linux", icon: <FaLinux className="w-5 h-5" /> },
       { name: "PostgreSQL", icon: <SiPostgresql className="w-5 h-5" /> },
       { name: "MongoDB", icon: <SiMongodb className="w-5 h-5" /> },
       { name: "MySQL", icon: <SiMysql className="w-5 h-5" /> },
-      { name: "Redis", icon: <SiRedis className="w-5 h-5" /> },
       { name: "Docker", icon: <FaDocker className="w-5 h-5" /> },
-      { name: "Kubernetes", icon: <SiKubernetes className="w-5 h-5" /> },
       { name: "AWS", icon: <FaAws className="w-5 h-5" /> },
       { name: "Git", icon: <FaGitAlt className="w-5 h-5" /> },
+      { name: "Vim", icon: <SiVim className="w-5 h-5" /> },          // <-- added
+      { name: "Laravel", icon: <SiLaravel className="w-5 h-5" /> },
     ],
     language: [
       { name: "Python", icon: <FaPython className="w-5 h-5" /> },
       { name: "C++", icon: <SiCplusplus className="w-5 h-5" /> },
       { name: "JavaScript", icon: <FaJs className="w-5 h-5" /> },
-      { name: "Go", icon: <SiGo className="w-5 h-5" /> },
     ],
     database: [
       { name: "PostgreSQL", icon: <SiPostgresql className="w-5 h-5" /> },
       { name: "MongoDB", icon: <SiMongodb className="w-5 h-5" /> },
       { name: "MySQL", icon: <SiMysql className="w-5 h-5" /> },
-      { name: "Redis", icon: <SiRedis className="w-5 h-5" /> },
     ],
     frontend: [
       { name: "React", icon: <FaReact className="w-5 h-5" /> },
@@ -154,19 +151,18 @@ export default function HeroSection() {
     backend: [
       { name: "Node.js", icon: <FaNodeJs className="w-5 h-5" /> },
       { name: "Python", icon: <FaPython className="w-5 h-5" /> },
-      { name: "Go", icon: <SiGo className="w-5 h-5" /> },
     ],
     tool: [
       { name: "VS Code", icon: <VSCodeIcon /> },
       { name: "Linux", icon: <FaLinux className="w-5 h-5" /> },
       { name: "Docker", icon: <FaDocker className="w-5 h-5" /> },
-      { name: "Kubernetes", icon: <SiKubernetes className="w-5 h-5" /> },
+      { name: "Vim", icon: <SiVim className="w-5 h-5" /> },          // <-- added
+
       { name: "Git", icon: <FaGitAlt className="w-5 h-5" /> },
     ],
     cloud: [
       { name: "AWS", icon: <FaAws className="w-5 h-5" /> },
       { name: "Docker", icon: <FaDocker className="w-5 h-5" /> },
-      { name: "Kubernetes", icon: <SiKubernetes className="w-5 h-5" /> },
     ]
   };
 
@@ -214,7 +210,7 @@ export default function HeroSection() {
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center bg-gray-900 overflow-hidden">
       <LetterGlitch />
-      
+
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -222,7 +218,7 @@ export default function HeroSection() {
         className="relative z-10 bg-gray-900/80 backdrop-blur-sm rounded-xl p-8 w-11/12 max-w-4xl border border-green-500/30"
       >
         {/* Social Links */}
-        <motion.div 
+        <motion.div
           className="absolute top-6 right-6 flex space-x-3"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -261,7 +257,7 @@ export default function HeroSection() {
         {/* Main Content */}
         <div className="text-white font-mono space-y-6">
           {/* Terminal Header */}
-          <motion.div 
+          <motion.div
             className="flex items-center space-x-2 text-green-400"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -270,9 +266,9 @@ export default function HeroSection() {
             <FaTerminal className="w-5 h-5" />
             <span className="text-sm">terminal — zsh — 80×24</span>
           </motion.div>
-          
+
           {/* Whoami Command */}
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -280,9 +276,9 @@ export default function HeroSection() {
           >
             <span className="text-blue-400">visitor@portfolio</span>:<span className="text-yellow-400">~</span>$ whoami
           </motion.p>
-          
+
           {/* Name */}
-          <motion.h1 
+          <motion.h1
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.4, type: "spring" }}
@@ -290,9 +286,9 @@ export default function HeroSection() {
           >
             Zakariae Alliouate
           </motion.h1>
-          
+
           {/* Typing Animation */}
-          <motion.div 
+          <motion.div
             className="text-gray-300 text-lg h-8 flex items-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -309,7 +305,7 @@ export default function HeroSection() {
           </motion.div>
 
           {/* Skills Section */}
-          <motion.div 
+          <motion.div
             className="pt-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -324,11 +320,10 @@ export default function HeroSection() {
                   <motion.button
                     key={category}
                     onClick={() => setActiveSkill(category)}
-                    className={`px-3 py-1 text-xs rounded-full border transition-all ${
-                      activeSkill === category 
-                        ? "bg-green-500 text-gray-900 border-green-400" 
+                    className={`px-3 py-1 text-xs rounded-full border transition-all ${activeSkill === category
+                        ? "bg-green-500 text-gray-900 border-green-400"
                         : "text-green-300 border-green-500/50 hover:bg-green-500/20"
-                    }`}
+                      }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -339,7 +334,7 @@ export default function HeroSection() {
             </div>
 
             {/* Skills Grid */}
-            <motion.div 
+            <motion.div
               layout
               className="flex flex-wrap gap-3"
               initial={{ opacity: 0 }}
@@ -354,13 +349,13 @@ export default function HeroSection() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ 
-                      delay: index * 0.05, 
+                    transition={{
+                      delay: index * 0.05,
                       type: "spring",
-                      stiffness: 300 
+                      stiffness: 300
                     }}
-                    whileHover={{ 
-                      scale: 1.05, 
+                    whileHover={{
+                      scale: 1.05,
                       backgroundColor: "#1f3a2f",
                       transition: { type: "spring", stiffness: 400 }
                     }}
@@ -375,7 +370,7 @@ export default function HeroSection() {
           </motion.div>
 
           {/* Contact Info */}
-          <motion.div 
+          <motion.div
             className="pt-6 text-green-400 text-sm space-y-1 font-mono border-t border-green-500/30"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
