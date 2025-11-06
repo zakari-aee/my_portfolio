@@ -1,17 +1,96 @@
 // AboutSection.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-// Simple Button Component
+// Glitch Background Canvas
+const LetterGlitch = () => {
+  const canvasRef = useRef(null);
+  const animationRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@!%^&*()';
+    const fontSize = 14;
+    const columns = Math.floor(width / fontSize);
+    const drops = Array(columns).fill(1);
+
+    function draw() {
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.05)';
+      ctx.fillRect(0, 0, width, height);
+      
+      ctx.fillStyle = '#10b981';
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = characters.charAt(Math.floor(Math.random() * characters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        
+        if (drops[i] * fontSize > height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    function animate() {
+      draw();
+      animationRef.current = requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    const handleResize = () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      cancelAnimationFrame(animationRef.current);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  return (
+    <canvas 
+      ref={canvasRef} 
+      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
+    />
+  );
+};
+
+// Glitch Button Component
 const GlitchButton = ({ children, onClick, className = "" }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
   return (
     <motion.button
       onClick={onClick}
-      className={`px-6 py-3 bg-green-500 hover:bg-green-400 text-gray-900 font-bold rounded-lg border-2 border-green-400 transition-all duration-300 ${className}`}
-      whileHover={{ scale: 1.05 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className={`relative px-6 py-3 bg-green-500 hover:bg-green-400 text-gray-900 font-bold rounded-lg overflow-hidden border-2 border-green-400 transition-all duration-300 ${className}`}
+      whileHover={{ scale: 1.05, y: -2 }}
       whileTap={{ scale: 0.95 }}
     >
-      {children}
+      <span className="relative z-10 flex items-center justify-center">
+        {children}
+      </span>
+      
+      {isHovered && (
+        <motion.div
+          className="absolute inset-0 bg-white/20"
+          initial={{ x: "-100%" }}
+          animate={{ x: "100%" }}
+          transition={{ duration: 0.5 }}
+        />
+      )}
     </motion.button>
   );
 };
@@ -100,6 +179,9 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="relative w-full min-h-screen flex items-center justify-center bg-gray-900 py-20">
+      {/* Glitch Background */}
+      <LetterGlitch />
+
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}

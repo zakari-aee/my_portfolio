@@ -382,7 +382,7 @@ export default function HeroSection() {
             transition={{ delay: 1.4 }}
           >
             <p>$ email: <span className="text-blue-400">zakariaealliouate@gmail.com</span></p>
-            <p>$ location: <span className="text-yellow-400">Morocco</span></p>
+            <p>$ location: <span className="text-blue-400">Morocco</span></p>
             <p>$ status: <span className="text-green-300">Available for projects</span></p>
           </motion.div>
         </div>
