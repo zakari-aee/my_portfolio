@@ -95,6 +95,18 @@ const GlitchButton = ({ children, onClick, className = "" }) => {
   );
 };
 
+// LeetCode SVG Icon
+const LeetCodeIcon = () => (
+  <svg
+    className="w-5 h-5"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.012-.012-4.106-4.106a3.029 3.029 0 0 1 0-4.289l3.634-3.635a1.384 1.384 0 0 0 0-1.955l-3.63-3.634a1.374 1.374 0 0 0-1.95 0L2.831 5.971a5.443 5.443 0 0 0-1.693 3.879c0 1.47.612 2.835 1.693 3.879l4.794 4.794a7.628 7.628 0 0 0 10.818 0l4.794-4.794A5.443 5.443 0 0 0 24 9.85a5.443 5.443 0 0 0-1.693-3.879L14.445.438A1.374 1.374 0 0 0 13.483 0z"/>
+  </svg>
+);
+
 export default function AboutSection() {
   const [activeTab, setActiveTab] = useState("experience");
   const [terminalText, setTerminalText] = useState("");
@@ -279,6 +291,19 @@ export default function AboutSection() {
                 </div>
               </div>
             </div>
+
+            {/* LeetCode Link */}
+            <motion.a
+              href="https://leetcode.com/u/zakari_aee/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center space-x-2 bg-gray-800/50 p-3 rounded-lg border border-orange-500/30 hover:border-orange-400 transition-all duration-300 text-orange-400 hover:text-orange-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <LeetCodeIcon />
+              <span className="text-sm font-mono">LeetCode Profile</span>
+            </motion.a>
           </motion.div>
 
           {/* Right Column - Experience & Education */}
